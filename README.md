@@ -1,10 +1,6 @@
-# NOTE
-
-We changed to github pages. Please use https://frc2713.github.io/QRScout/ until we redirect http://scout.redhawkrobotics.org
-
-Config file is located at https://armada2508.github.io/QRScout/config/2025/config.json
 
 # QRScout
+https://armada2508.github.io/QRScout/
 
 A QR Code-based scouting system for FRC
 
