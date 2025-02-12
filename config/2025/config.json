@@ -153,14 +153,6 @@
           "defaultValue": false
         },
         {
-          "title": "Timer",
-          "description": "The time it took for the robot to finish autonomous.",
-          "type": "timer",
-          "required": false,
-          "code": "timer",
-          "defaultValue": 0
-        },
-        {
           "title": "Coral L1 Scored",
           "description": "The number of level 1 coral scored during autonomous.",
           "type": "counter",
