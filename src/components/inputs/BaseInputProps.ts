@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const inputTypeSchema = z
-  .enum(['text', 'number', 'boolean', 'range', 'select', 'counter', 'timer', 'image'])
+  .enum(['text', 'number', 'boolean', 'range', 'select', 'counter', 'timer'])
   .describe('The type of input');
 
 export const inputBaseSchema = z.object({
@@ -71,10 +71,6 @@ export const timerInputSchema = inputBaseSchema.extend({
   defaultValue: z.number().default(0).describe('The default value'),
 });
 
-export const imageInputSchema = inputBaseSchema.extend({
-  type: z.literal('image'),
-  defaultValue: z.tuple([z.number(), z.number()]).default([0, 0]).describe('The default value')
-});
 
 export const sectionSchema = z.object({
   name: z.string(),
@@ -211,7 +207,6 @@ export type CounterInputData = z.infer<typeof counterInputSchema>;
 export type RangeInputData = z.infer<typeof rangeInputSchema>;
 export type BooleanInputData = z.infer<typeof booleanInputSchema>;
 export type TimerInputData = z.infer<typeof timerInputSchema>;
-export type ImageInputData = z.infer<typeof imageInputSchema>;
 
 export type InputPropsMap = {
   text: StringInputData;
@@ -221,7 +216,6 @@ export type InputPropsMap = {
   select: SelectInputData;
   counter: CounterInputData;
   timer: TimerInputData;
-  iamge: ImageInputData;
 };
 
 export type SectionProps = z.infer<typeof sectionSchema>;
