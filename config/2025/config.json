@@ -73,7 +73,7 @@
         {
           "title": "Match Number",
           "description": "Enter the match number.",
-          "type": "number",
+          "type": "match",
           "required": true,
           "code": "matchNumber",
           "defaultValue": 1,
@@ -101,7 +101,7 @@
           "description": "The team number of the robot you're scouting.",
           "type": "number",
           "required": true,
-          "code": "teamNumber",
+          "code": "team",
           "defaultValue": 0,
           "min": 0,
           "max": 19999
@@ -111,12 +111,12 @@
           "description": "The starting position of the robot.",
           "type": "select",
           "required": true,
-          "code": "Prsp",
+          "code": "sp",
           "defaultValue": "",
           "choices": {
-            "R1": "Left",
+            "R1": "Top",
             "R2": "Middle",
-            "R3": "Right"
+            "R3": "Bottom"
           }
         },
         {
@@ -124,7 +124,7 @@
           "description": "Check if the robot did not show up for the match.",
           "type": "boolean",
           "required": false,
-          "code": "noShow",
+          "code": "ns",
           "defaultValue": false
         },
         {
@@ -132,7 +132,7 @@
           "description": "The starting level of the cage",
           "type": "select",
           "required": true,
-          "code": "CPos",
+          "code": "cp",
           "defaultValue": "",
           "choices": {
             "SP1": "Deep",
@@ -149,102 +149,14 @@
           "description": "Check if the robot moved during autonomous.",
           "type": "boolean",
           "required": false,
-          "code": "Mved",
-          "defaultValue": false
-        },
-        {
-          "title": "Coral L1 Scored",
-          "description": "The number of level 1 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLOA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L2 Scored",
-          "description": "The number of level 2 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLTA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L3 Scored",
-          "description": "The number of level 3 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLThA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Coral L4 Scored",
-          "description": "The number of level 4 coral scored during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "CLFA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Barge Algae Scored",
-          "description": "The number of Algae scored in the barge during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "BASA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Processor Algae Scored",
-          "description": "The number of Algae scored in the processor during autonomous.",
-          "type": "counter",
-          "required": false,
-          "code": "PASA",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        },
-        {
-          "title": "Dislodged Algae?",
-          "type": "boolean",
-          "required": false,
-          "code": "dto",
-          "defaultValue": false
-        },
-        {
-          "title": "Auto Foul",
-          "type": "counter",
-          "required": false,
-          "code": "auf",
-          "defaultValue": 0,
-          "min": 0,
-          "step": 1
-        }
-      ]
-    },
-    {
-      "name": "Teleop",
-      "fields": [
-        {
-          "title": "Dislodged Algae?",
-          "type": "boolean",
-          "required": false,
-          "code": "daT",
+          "code": "m",
           "defaultValue": false
         },
         {
           "title": "Pickup Location",
           "type": "select",
           "required": false,
-          "code": "TGPL",
+          "code": "Apl",
           "defaultValue": "",
           "choices": {
             "1": "None",
@@ -259,6 +171,107 @@
           "description": "The number of level 1 coral scored during autonomous.",
           "type": "counter",
           "required": false,
+          "code": "Ac1s",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Coral L2 Scored",
+          "description": "The number of level 2 coral scored during autonomous.",
+          "type": "counter",
+          "required": false,
+          "code": "Ac2s",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Coral L3 Scored",
+          "description": "The number of level 3 coral scored during autonomous.",
+          "type": "counter",
+          "required": false,
+          "code": "Ac3s",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Coral L4 Scored",
+          "description": "The number of level 4 coral scored during autonomous.",
+          "type": "counter",
+          "required": false,
+          "code": "Ac4s",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Barge Algae Scored",
+          "description": "The number of Algae scored in the barge during autonomous.",
+          "type": "counter",
+          "required": false,
+          "code": "Abas",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Processor Algae Scored",
+          "description": "The number of Algae scored in the processor during autonomous.",
+          "type": "counter",
+          "required": false,
+          "code": "Apas",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
+        },
+        {
+          "title": "Dislodged Algae?",
+          "type": "boolean",
+          "required": false,
+          "code": "Ada",
+          "defaultValue": false
+        }
+      ]
+    },
+    {
+      "name": "Teleop",
+      "fields": [
+        {
+          "title": "Dislodged Algae?",
+          "type": "boolean",
+          "required": false,
+          "code": "Tda",
+          "defaultValue": false
+        },
+        {
+          "title": "Cycle-Time Timer",
+          "description": "How long is one cycle for the robot.",
+          "type": "timer",
+          "required": false,
+          "code": "Tc-tt",
+          "defaultValue": 0
+        },
+        {
+          "title": "Pickup Location",
+          "type": "select",
+          "required": false,
+          "code": "Tpl",
+          "defaultValue": "",
+          "choices": {
+            "1": "None",
+            "2": "Ground",
+            "3": "Human Player",
+            "4": "Both"
+          },
+          "multiSelect": true
+        },
+        {
+          "title": "Coral L1 Scored",
+          "description": "The number of level 1 coral scored during autonomous.",
+          "type": "Tc1s",
+          "required": false,
           "code": "CLOT",
           "defaultValue": 0,
           "min": 0,
@@ -269,7 +282,7 @@
           "description": "The number of level 2 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLTT",
+          "code": "Tc2s",
           "defaultValue": 0,
           "min": 0,
           "step": 1
@@ -279,7 +292,7 @@
           "description": "The number of level 3 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLThT",
+          "code": "Tc3s",
           "defaultValue": 0,
           "min": 0,
           "step": 1
@@ -289,7 +302,7 @@
           "description": "The number of level 4 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLFT",
+          "code": "Tc4s",
           "defaultValue": 0,
           "min": 0,
           "step": 1
@@ -299,7 +312,7 @@
           "description": "The number of Algae scored in the barge during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "BAST",
+          "code": "Tbas",
           "defaultValue": 0,
           "min": 0,
           "step": 1
@@ -309,38 +322,23 @@
           "description": "The number of Algae scored in the processor during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "PAST",
+          "code": "Tpas",
           "defaultValue": 0,
           "min": 0,
           "step": 1
         },
         {
-          "title": "Crossed Feild/Played Defense?",
-          "type": "boolean",
-          "required": false,
-          "code": "CFPDT",
-          "defaultValue": false
-        },
-        {
           "title": "Tipped/Fell Over?",
           "type": "boolean",
           "required": false,
-          "code": "TFOT",
+          "code": "Ttfo",
           "defaultValue": false
-        },
-        {
-          "title": "Touched Opposing Cage?",
-          "type": "counter",
-          "required": false,
-          "code": "Fou/Tech",
-          "defaultValue": 0,
-          "step": 1
         },
         {
           "title": "Died?",
           "type": "boolean",
           "required": false,
-          "code": "DEg",
+          "code": "Td",
           "defaultValue": false
         }
       ]
@@ -349,10 +347,18 @@
       "name": "Endgame",
       "fields": [
         {
+          "title": "Climb Timer",
+          "description": "How long does it take the robot to climb.",
+          "type": "timer",
+          "required": false,
+          "code": "Ect",
+          "defaultValue": 0
+        },
+        {
           "title": "End Position",
           "type": "select",
           "required": true,
-          "code": "epo",
+          "code": "Eep",
           "defaultValue": "No",
           "choices": {
             "No": "Not Parked",
@@ -361,13 +367,6 @@
             "Dc": "Deep Climb",
             "Fc": "Failed Climb"
           }
-        },
-        {
-          "title": "Defended?",
-          "type": "boolean",
-          "required": false,
-          "code": "DEFEg",
-          "defaultValue": false
         }
       ]
     },
@@ -378,44 +377,51 @@
           "title": "Offense Skill",
           "type": "range",
           "required": false,
-          "code": "or",
+          "code": "Pos",
           "defaultValue": 3,
           "min": 1,
           "max": 5,
           "step": 1
         },
         {
-          "title": "Defensive Skill",
+          "title": "Defense Skill",
           "type": "range",
           "required": false,
-          "code": "dr",
+          "code": "Pdfs",
           "defaultValue": 3,
           "min": 1,
           "max": 5,
           "step": 1
         },
         {
-          "title": "Yellow/Red Card",
-          "type": "select",
-          "required": true,
-          "code": "yc",
-          "defaultValue": "No Card",
-          "choices": {
-            "No Card": "No Card",
-            "Yellow": "Yellow Card",
-            "Red": "Red Card"
-          }
+          "title": "Driver Skill",
+          "type": "range",
+          "required": false,
+          "code": "Pdvs",
+          "defaultValue": 3,
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        {
+          "title": "Ranking Points Earned",
+          "type": "counter",
+          "required": false,
+          "code": "Prpe",
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
         },
         {
           "title": "Comments",
           "type": "text",
           "required": false,
-          "code": "co",
+          "code": "Pco",
           "defaultValue": "",
           "min": 0,
           "max": 50
         }
       ]
-    }
+    } 
   ]
 }
