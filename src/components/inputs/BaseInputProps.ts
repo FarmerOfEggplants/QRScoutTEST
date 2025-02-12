@@ -73,6 +73,7 @@ export const timerInputSchema = inputBaseSchema.extend({
 
 export const imageInputSchema = inputBaseSchema.extend({
   type: z.literal('image'),
+  defaultValue: z.tuple([z.number(), z.number()]).default([0, 0]).describe('The default value')
 });
 
 export const sectionSchema = z.object({
