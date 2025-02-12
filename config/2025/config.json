@@ -73,9 +73,9 @@
         {
           "title": "Match Number",
           "description": "Enter the match number.",
-          "type": "match",
+          "type": "number",
           "required": true,
-          "code": "matchNumber",
+          "code": "match",
           "defaultValue": 1,
           "formResetBehavior": "increment"
         },
@@ -270,9 +270,9 @@
         {
           "title": "Coral L1 Scored",
           "description": "The number of level 1 coral scored during autonomous.",
-          "type": "Tc1s",
+          "type": "counter",
           "required": false,
-          "code": "CLOT",
+          "code": "Tc1s",
           "defaultValue": 0,
           "min": 0,
           "step": 1
@@ -398,6 +398,16 @@
           "type": "range",
           "required": false,
           "code": "Pdvs",
+          "defaultValue": 3,
+          "min": 1,
+          "max": 5,
+          "step": 1
+        },
+        {
+          "title": "Robot Speed",
+          "type": "range",
+          "required": false,
+          "code": "Prs",
           "defaultValue": 3,
           "min": 1,
           "max": 5,
