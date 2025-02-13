@@ -1,0 +1,63 @@
+{
+    "title": "QRScout",
+  "page_title": "Reefscape",
+  "delimiter": "\t",
+  "teamNumber": 2508,
+  "theme": {
+    "light": {
+
+    },
+    "dark": {
+
+    }
+  },
+  "sections": [
+    {
+        "name": "Pit Scouting",
+        "fields": [
+            {
+                "title": "Scouter Initials",
+                "description": "Enter the initials of the scouter",
+                "type": "text",
+                "required": true,
+                "code": "scouter",
+                "defaultValue": "",
+                "formResetBehavior": "preserve"
+            },
+            {
+                "title": "Team Number",
+                "description": "Enter the number of the team being scouted",
+                "type": "number",
+                "required": true,
+                "code": "team"
+            },
+            {
+                "title": "Cool Robot Name",
+                "description": "Does their robot have a name?",
+                "type": "text",
+                "code": "crn"
+            },
+            {
+                "title": "Drivetrain",
+                "type": "radio",
+                "choices": {
+                    "s": "Swerve<br>",
+                    "w": "West Coast/Tank<br>",
+                    "b": "Butterly/Grasshopper<br>",
+                    "m": "Mechanum<br>",
+                    "o": "Other"
+                },
+                "code": "drv"
+            },
+            {
+                "title": "Other Drivetrain",
+                "type": "text",
+                "code": "odt"
+            },
+            {
+                "title": "Drivetrain Motor"
+            }
+        ]
+    }
+  ]
+}
