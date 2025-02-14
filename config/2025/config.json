@@ -384,6 +384,12 @@
           "step": 1
         },
         {
+          "title": "Played Defense?",
+          "type": "boolean",
+          "code": "Ppd",
+          "defaultValue": false
+        },
+        {
           "title": "Defense Skill",
           "type": "range",
           "required": false,
