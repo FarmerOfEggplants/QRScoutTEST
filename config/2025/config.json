@@ -126,18 +126,6 @@
           "required": false,
           "code": "ns",
           "defaultValue": false
-        },
-        {
-          "title": "Cage Position",
-          "description": "The starting level of the cage",
-          "type": "select",
-          "required": true,
-          "code": "cp",
-          "defaultValue": "",
-          "choices": {
-            "SP1": "Deep",
-            "SP2": "Shallow"
-          }
         }
       ]
     },
@@ -246,14 +234,6 @@
           "defaultValue": false
         },
         {
-          "title": "Cycle-Time Timer",
-          "description": "How long is one cycle for the robot.",
-          "type": "timer",
-          "required": false,
-          "code": "Tc-tt",
-          "defaultValue": 0
-        },
-        {
           "title": "Pickup Location",
           "type": "select",
           "required": false,
@@ -346,14 +326,6 @@
     {
       "name": "Endgame",
       "fields": [
-        {
-          "title": "Climb Timer",
-          "description": "How long does it take the robot to climb.",
-          "type": "timer",
-          "required": false,
-          "code": "Ect",
-          "defaultValue": 0
-        },
         {
           "title": "End Position",
           "type": "select",
