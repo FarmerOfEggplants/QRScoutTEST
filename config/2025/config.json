@@ -358,6 +358,7 @@
         {
           "title": "Played Defense?",
           "type": "boolean",
+          "required": false,
           "code": "Ppd",
           "defaultValue": false
         },
