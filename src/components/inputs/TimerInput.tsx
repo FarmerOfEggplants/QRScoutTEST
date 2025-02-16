@@ -61,18 +61,14 @@ export default function TimerInput(props: ConfigurableInputProps) {
   }
 
   useEffect(() => {
-    if (times.length > 0) {
-      updateValue(props.code, getAvg(times));
-    }
-  }, [times]);
-
-  useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-    if (isRunning) {
-      intervalId = setInterval(() => setTime(time + 1), 10);
-    }
+    if (!isRunning) return;
+  
+    const intervalId = setInterval(() => {
+      setTime(prevTime => prevTime + 1);
+    }, 10);
+  
     return () => clearInterval(intervalId);
-  }, [isRunning, time]);
+  }, [isRunning]);
 
   return (
     <div className="my-2 flex flex-col items-center justify-center">
