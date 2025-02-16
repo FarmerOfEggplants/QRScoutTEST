@@ -136,7 +136,7 @@
           "title": "Cycle Pattern",
           "description": "What the team's robot is cycling between (coral, algae).",
           "type": "select",
-          "required" : "false",
+          "required" : false,
           "code": "cyP",
           "defaultValue": "",
           "choices": {
@@ -154,7 +154,7 @@
           "title": "Climb Timer",
           "description": "How long the robot takes to climb thier cage.",
           "type": "timer",
-          "required": "true",
+          "required": true,
           "defaultValue": 0,
           "code": "ct"
         }
