@@ -76,7 +76,7 @@
                 "type": "number",
                 "required": true,
                 "code": "team",
-                "defaultValue": "",
+                "defaultValue": 0,
                 "formResetBehavior": "reset"
             },
             {
@@ -106,7 +106,7 @@
                     "both": "Both",
                     "neither": "Cannot Climb"
                 },
-                "code": "clicapability"
+                "code": "clicapabili"
             },
             {
                 "title": "Climbing Speed",
@@ -144,6 +144,7 @@
                 "title": "Reef Scoring Levels",
                 "type": "select",
                 "description": "What levels can they score coral on",
+                "required": false,
                 "defaultValue": "none",
                 "formResetBehavior": "reset",
                 "choices": {
@@ -299,7 +300,7 @@
                 "type": "text",
                 "description": "What can they do during autonomous",
                 "required": false,
-                "defaultValue": false,
+                "defaultValue": "",
                 "formResetBehavior": "reset",
                 "code": "auto"
             }
