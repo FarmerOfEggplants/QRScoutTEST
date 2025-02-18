@@ -75,14 +75,18 @@
                 "description": "Enter the number of the team being scouted",
                 "type": "number",
                 "required": true,
-                "code": "team"
+                "code": "team",
+                "defaultValue": "",
+                "formResetBehavior": "reset"
             },
             {
                 "title": "Cool Robot Name",
                 "description": "Does their robot have a name?",
                 "type": "text",
                 "required": false,
-                "code": "silly"
+                "code": "silly",
+                "defaultValue": "",
+                "formResetBehavior": "reset"
             }
         ]
     },
@@ -90,59 +94,80 @@
         "name": "Robot Capabilities",
         "fields": [
             {
-                "title": "Climbing Cage Position",
+                "title": "Climbing Capability",
                 "type": "select",
+                "description": "Can they climb a cage and what cage can they climb",
+                "required": false,
+                "defaultValue": "neither",
+                "formResetBehavior": "reset",
                 "choices": {
                     "deep": "Deep Cage",
                     "shallow": "Shallow Cage",
-                    "both": "Both"
+                    "both": "Both",
+                    "neither": "Cannot Climb"
                 },
-                "required": false,
-                "defaultValue": ""
-            },
-            {
-                "title": "Climbing Capability",
-                "type": "boolean",
-                "required": false,
-                "defaultValue": false
+                "code": "clicapability"
             },
             {
                 "title": "Climbing Speed",
                 "type": "number",
+                "description": "How many seconds does it take to climb a cage",
                 "required": false,
-                "defaultValue": 0
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "clispeed"
             },
             {
                 "title": "Dislodging Algae",
                 "type": "boolean",
+                "description": "Are they able to remove algae from the reef",
                 "required": false,
-                "defaultValue": false
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "algremoval"
             },
             {
                 "title": "Scoring Algae",
                 "type": "select",
+                "required": false,
+                "defaultValue": "none",
+                "formResetBehavior": "reset",
                 "choices": {
                     "processor": "Processor",
                     "net": "Net",
                     "both": "Both",
                     "none": "None"
                 },
-                "required": false,
-                "defaultValue": ""
+                "code": "algscore"
             },
             {
-                "title": "Reef Scoring Levels"
+                "title": "Reef Scoring Levels",
+                "type": "select",
+                "description": "What levels can they score coral on",
+                "defaultValue": "none",
+                "formResetBehavior": "reset",
+                "choices": {
+                    "none": "Cannot Score",
+                    "L1": "Level One",
+                    "L2": "Up to Level Two",
+                    "L3": "Up to Level Three",
+                    "L4": "Up to Level Four"
+                },
+                "code": "reefscoring"
             },
             {
                 "title": "Coral Pickup Options",
                 "type": "select",
+                "description": "Where can they pick up coral",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
                 "choices": {
                     "Ground": "Ground",
                     "human-player": "Human Player",
                     "Both": "Both"
                 },
-                "required": false,
-                "defaultValue": ""
+                "code": "corpickup"
             }
         ]
     },
@@ -152,6 +177,9 @@
             {
                 "title": "Drivetrain",
                 "type": "select",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
                 "choices": {
                     "swerve": "Swerve",
                     "west/tank": "West Coast/Tank",
@@ -159,34 +187,43 @@
                     "mechanum": "Mechanum",
                     "other": "Other"
                 },
-                "code": "drv",
-                "required": false,
-                "defaultValue": ""
+                "code": "drv"
             },
             {
                 "title": "Gear Ratio",
                 "type": "number",
+                "description": "What is the gear ratio of their drivebase",
                 "required": false,
-                "defaultValue": 0
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "gearratio"
             },
             {
                 "title": "Length",
                 "type": "number",
+                "description": "Length of robot (in inches)",
                 "required": false,
-                "defaultValue": 0
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "len"
             },
             {
                 "title": "Width",
-                "type": "number"
-                ,
+                "type": "number",
+                "description": "Width of robot (in inches)",
                 "required": false,
-                "defaultValue": 0
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "wid"
             },
             {
                 "title": "Weight",
                 "type": "number",
+                "description": "Weight of robot (in pounds)",
                 "required": false,
-                "defaultValue": 0
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "wei"
             }
         ]
     },
@@ -195,28 +232,39 @@
         "fields": [
             {
                 "title": "Coral",
-                "type": "boolean"
-                ,
+                "type": "boolean",
+                "description": "Will they try to score coral",
                 "required": false,
-                "defaultValue": false
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "cor"
             },
             {
                 "title": "Algae",
                 "type": "boolean",
+                "description": "Will they try to score algae",
                 "required": false,
-                "defaultValue": false
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "alg"
             },
             {
                 "title": "Climb",
                 "type": "boolean",
+                "description": "Will they try to climb a cage",
                 "required": false,
-                "defaultValue": false
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "cli"
             },
             {
                 "title": "Other",
                 "type": "text",
+                "description": "Is there anything else they'll try to do during the match",
                 "required": false,
-                "defaultValue": ""
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "code": "oth"
             }
         ]
     },
@@ -226,18 +274,20 @@
             {
                 "title": "Coral station",
                 "type": "boolean",
-                "desription": "Do they have someone at the coral station"
-                ,
+                "description": "Do they have someone at the coral station",
                 "required": false,
-                "defaultValue": false
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "corstat"
             },
             {
                 "title": "Barge scoring",
                 "type": "boolean",
                 "description": "Are they able to score in the barge",
                 "required": false,
-                "defaultValue": false
-                
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "barscor"
             }
         ]
     },
@@ -247,9 +297,11 @@
             {
                 "title": "Auto Capabilities",
                 "type": "text",
+                "description": "What can they do during autonomous",
                 "required": false,
-                "defaultValue": false
-                
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "auto"
             }
         ]
     },
@@ -257,23 +309,31 @@
         "name": "Estimated Cycle Times",
         "fields": [
             {
-                "title": "Cycle Time",
+                "title": "Coral Cycle Time",
                 "type": "number",
+                "description": "How many seconds does it take to score coral",
                 "required": false,
-                "defaultValue": 0
-                
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "corcycle"
             },
             {
-                "title": "Choices",
-                "type": "select",
-                "choices": {
-                    "c": "Coral",
-                    "a": "Algae",
-                    "Other": "Other"
-                },
-                "description": "Types of cycles that the given time applies to",
+                "title": "Algae Cycle Time",
+                "type": "number",
+                "description": "How many seconds does it take to score algae",
                 "required": false,
-                "defaultValue": ""
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "algcycle"
+            },
+            {
+                "title": "Other",
+                "type": "text",
+                "description": "Do they know any other cycle times",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "code": "othcycle"
             }
         ]
     }
