@@ -337,6 +337,20 @@
                 "code": "othcycle"
             }
         ]
-    }
+    },
+    {
+        "name": "Comments",
+        "fields": [
+            {
+                "title": "comments",
+                "type": "text",
+                "description": "Other unique / notable things about the bot / team",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "code": "comments"
+            }
         ]
     }
+]
+}
