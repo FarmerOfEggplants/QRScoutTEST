@@ -56,17 +56,23 @@ export default function TimerInput(props: ConfigurableInputProps) {
   }
 
   function lap() {
-    setTimes([...times, time / 100]);
+    const newTimes = [...times, time / 100];
+    setTimes(newTimes);
     setTime(0);
+
+    const newAverage = getAvg(newTimes);
+    updateValue(props.code, newAverage);
   }
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-    if (isRunning) {
-      intervalId = setInterval(() => setTime(time + 1), 10);
-    }
+    if (!isRunning) return;
+  
+    const intervalId = setInterval(() => {
+      setTime(prevTime => prevTime + 1);
+    }, 10);
+  
     return () => clearInterval(intervalId);
-  }, [isRunning, time]);
+  }, [isRunning]);
 
   return (
     <div className="my-2 flex flex-col items-center justify-center">
