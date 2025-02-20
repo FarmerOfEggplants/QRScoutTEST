@@ -82,7 +82,7 @@ class OCR:
             self.stopped = self.exchange.stopped
 #^ GOOGLE SHEETS STUFF
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-fd7fbe7526ef.json"
+json_path = "C:\Repos\QRScout\QRScoutScanner\APIkey.json"
 if not os.path.exists(json_path):
     raise FileNotFoundError(f"Error: JSON file not found at {json_path}")
 
