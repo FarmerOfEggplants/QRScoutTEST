@@ -82,7 +82,7 @@ class OCR:
             self.stopped = self.exchange.stopped
 #^ GOOGLE SHEETS STUFF
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-ef23a04501fa.json"
+json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-fd7fbe7526ef.json"
 if not os.path.exists(json_path):
     raise FileNotFoundError(f"Error: JSON file not found at {json_path}")
 
@@ -94,6 +94,8 @@ try:
     sheet = client.open("Reefscape Scouter Spreadsheet").sheet1
 except gspread.exceptions.SpreadsheetNotFound:
     raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
+
+
 
 def update_google_sheet(sheet, qr_data):
     if not qr_data:
