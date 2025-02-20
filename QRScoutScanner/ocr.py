@@ -82,7 +82,7 @@ class OCR:
             self.stopped = self.exchange.stopped
 #^ GOOGLE SHEETS STUFF
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-993a929b80bf.json"
+json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-ef23a04501fa.json"
 if not os.path.exists(json_path):
     raise FileNotFoundError(f"Error: JSON file not found at {json_path}")
 
@@ -113,7 +113,7 @@ def openQRScanner(filePath):
     cap.set_exchange(frames)            #Start copying video capture frames to ocr
     detector = cv2.QRCodeDetector()     #Create QR code detector 
     
-    prev_qr_strs = [None]
+    prev_qr_arrays = [None]
     #QR Scanner loop, breaks when you hit 'q'
 
     while True:
@@ -121,7 +121,7 @@ def openQRScanner(filePath):
         # k = cv2.waitKey(100)
         _, frame = frames.read()
         # b,img = cap.read()
-        qr_str = None
+        qr_array = None
 
         if cv2.waitKey(1) == ord("q"):
                 frames.stop_process()
@@ -138,7 +138,7 @@ def openQRScanner(filePath):
         # if data:
         #     #If data isn't a string, continue
         #     try:
-        #         qr_str=str(data)
+        #         qr_array=str(data)
         #     except Exception as e:
         #         print("An Error Has Occured, Please make sure the QR code returns a string\n")
         #         print("5 second delay, please remove faulty QR code:\n")
@@ -155,17 +155,17 @@ def openQRScanner(filePath):
                 cv2.destroyAllWindows()
                 break  
 
-        #Write qr_string to allStrings, and prevent repeats
+        #Write qr_arraying to allStrings, and prevent repeats
         with open(filePath, 'r') as file:
             lines = file.readlines()
-            if (qr_str == None) or (qr_str +'\n' in lines):
+            if (qr_array == None) or (qr_array +'\n' in lines):
                continue
         with open(filePath, 'a') as file:
-            file.write(qr_str + '\n')
+            file.write(qr_array + '\n')
         #Paste string and beep confirmation
-        print(qr_str)
+        print(qr_array)
         
-        prev_qr_strs.append(qr_str)
+        prev_qr_arrays.append(qr_array)
         winsound.Beep(2500,500)
         time.sleep(0.5)
     cv2.destroyAllWindows()
@@ -178,11 +178,11 @@ if __name__ == '__main__':
 
     # initialize the cv2 QRCode detector 
     detector = cv2.QRCodeDetector()
-    prev_qr_strs = [None]
+    prev_qr_arrays = [None]
 
     while True: 
         is_grabbed, img = cap.read()
-        qr_str = None
+        qr_array = [None]
 
 
         cv2.imshow("Cam1", img)
@@ -197,7 +197,7 @@ if __name__ == '__main__':
         if data:
             #If data isn't a string, continue
             try:
-                qr_str=str(data)
+                qr_array=str(data)
                 print(data)
             except Exception as e:
                 print("An Error Has Occured, Please make sure the QR code returns a string\n")
@@ -208,14 +208,14 @@ if __name__ == '__main__':
                 print("Resuming program...")
                 continue
         
-        if (qr_str == None):
+        if (qr_array == None):
             continue
-        elif qr_str in prev_qr_strs:
+        elif qr_array in prev_qr_arrays:
             winsound.Beep(2000, 500)
             winsound.Beep(1500, 500)
             continue
 
-        print(qr_str)
+        print(qr_array)
         """
         DATA ARRAY EXPLANATION:
 
@@ -224,8 +224,8 @@ if __name__ == '__main__':
 
 
         """
-        prev_qr_strs.append(qr_str)
-        update_google_sheet(sheet, qr_str)
+        prev_qr_arrays.append(qr_array)
+        update_google_sheet(sheet, qr_array)
         winsound.Beep(2500,500)
         time.sleep(1.0)
 
