@@ -32,3 +32,6 @@ dist-ssr
 # Environment
 .env
 .env.*
+
+# json
+qrscoutdatamanager-fd7fbe7526ef.json
