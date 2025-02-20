@@ -34,4 +34,4 @@ dist-ssr
 .env.*
 
 # json
-qrscoutdatamanager-fd7fbe7526ef.json
+APIKey.json
