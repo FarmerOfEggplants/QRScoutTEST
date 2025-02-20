@@ -56,8 +56,12 @@ export default function TimerInput(props: ConfigurableInputProps) {
   }
 
   function lap() {
-    setTimes([...times, time / 100]);
+    const newTimes = [...times, time / 100];
+    setTimes(newTimes);
     setTime(0);
+
+    const newAverage = getAvg(newTimes);
+    updateValue(props.code, newAverage);
   }
 
   useEffect(() => {
