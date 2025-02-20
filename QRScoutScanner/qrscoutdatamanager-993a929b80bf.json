@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "qrscoutdatamanager",
+  "private_key_id": "993a929b80bf7a504d7b2997eb683a7f589e805d",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDc9K55CF6wO64A\nzirbqqyiSgzYrv+Ujini6R/nAEEv4Mx5NwJw/Ya+EF3rSbecSVD7mtX5iEp+FPeH\nvmb5vhX254+DksiTm3fGZEA3Jxj0kePi1GVENyKZl/+kPPd8Tm8VL4VzGYRSTKYX\nKUUK0ghI527ncNM3UEE7ukgq6R3afmxYE/VVUEFNbYEHgToEN+eC4h6BuUmriRrU\nQqYER7Zlrp5OD5Gattu3NrVIi63andl9PdRu0E6xcxsOKD0oPSSoYrn5m70Vkjil\nrgOMTDl7uvRl08GdYECHV9E/DMgWpFyWZ35nqiEHUtXiAHa9vKHxM9V0CWEF9zj1\nqBoTeJT5AgMBAAECggEAUUQNB6b0bI0GqnUpfjF/3RCvOOLkTZccAMENYsDNOPbN\nPafl1fjpHe6XHHq4dVrh1ihUmrpt64F6qQp2hVRMb8srFZFfBCsiGm200JQosYsW\n7c6AkF5W83bcJ2PlAms2n+wigPrZmAto6wvawOgO9AFq4OS2SpnR5E3XTTEAMeOu\njC/OoUo+SZBB/pmzHmom7Ap8Q2tDGM3+j8wpIsq/T1hR0awS3vF3MsrnU0c9up6/\nTb3VllPN34VKXb1EQAt5j8B5JG5EfoAG4bb1gkFYddn8H8vJA4SQsguRtIOH7dQa\n5RNbkJSuIou39B2+9i9o1SR5sXVdLnDb2hDWa05xoQKBgQD34+dU3B6SwXqoi+SL\nYoaqW0l+edFmxrRxhSdKa8Yu3Wwd4G7WHMMzx6Z42hT8jakqUY5lXzKDQtxlbpXr\n+vys/hyLDA8TTwYNYjiawwy+PVE1TkDzjJlWW0M8Lh7GWUhtoV1KUsQXhoXcE81o\nXVuOfvtBi3afgVQJ9c5Bp0SbEwKBgQDkLzM5ZicQz5io6hzKlXyA+d631+fRLYye\nHffVG2ViNdj2bHXyWPIleBSBGkdFdcbIW40SkyCubG5UuxqqP7Ey+qEr5u2u/ibV\nWGILpsOoievOny3F1NE8WSbPWfGytSjcl5jEpoa4SN+5/5awBf5bXQIgofosR2X7\n/UCQKITlQwKBgAsOXCP5yVdMT9cynhflZhI1DhsY/dDyrdueT7lPA0DV2VufxfHA\nyKgHkJI1T9hPzSq5BnvY+hzGn6Pagc9Lm3dvwgAloop+7MsuBU5Jwsi9XWDeQ6FZ\nNQGYAnCtseuw0b0qBEorVNmjw1akf3XXLB035qbuvHSyxPfIwdFFz5aHAoGBANWO\nt0pJKNa69A1izn9rWJL9SEyXbQaAstJpCcIRWdmIu/4llF20kSwwLkCF7546lEiA\nJo/z0upr4Pa8BkDAS3+CwcTs5BabFo0lot10vjnGm0NOBvDYNNteNMxrSaIPmqaZ\n2whxMjTXP0w8wTMM6PlpGsyfzBwU1oX4h6xjv70xAoGBANSy5Z5rC1vD/PTp7yEl\nsZ4cZpHZATtA0N0Zueab13nKwWans4TPDY371cJYCu3BrLcKAfF04snnQl+JJezP\n2ICNFJmtEs6a2DvUwR/RLdAYrucGBRtzkXPDhgAR+k+HSWaQWM4iBMjWq1hAFZH+\nYlAHUEG23CxFrQ7Zq7NcwoJu\n-----END PRIVATE KEY-----\n",
+  "client_email": "qrscoutscannerservice@qrscoutdatamanager.iam.gserviceaccount.com",
+  "client_id": "100829563719601616724",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/qrscoutscannerservice%40qrscoutdatamanager.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

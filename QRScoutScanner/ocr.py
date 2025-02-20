@@ -1,14 +1,15 @@
-import pyautogui
+
 import subprocess
 import time
-import pyperclip
+import os
 import cv2
 import numpy as np
 import winsound
 import threading
 import gspread
-from pyzbar.pyzbar import decode
+
 from oauth2client.service_account import ServiceAccountCredentials
+
 
 #Video Stream for windows
 class VideoStream:
@@ -79,14 +80,30 @@ class OCR:
                 data, bbox, _ = detector.detectAndDecode(self.img)
 
             self.stopped = self.exchange.stopped
-# GOOGLE SHEETS STUFF
-
+#^ GOOGLE SHEETS STUFF
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-CREDS_FILE = "qrscoutdatamanager-9b30b5f6eb0a.json"  # Replace with your actual JSON file name
+json_path = "C:\Repos\QRScout\QRScoutScanner\qrscoutdatamanager-993a929b80bf.json"
+if not os.path.exists(json_path):
+    raise FileNotFoundError(f"Error: JSON file not found at {json_path}")
 
-creds = ServiceAccountCredentials.from_json_keyfile_name(CREDS_FILE, SCOPE)
+creds = ServiceAccountCredentials.from_json_keyfile_name(json_path, SCOPE)
 client = gspread.authorize(creds)
-sheet = client.open("Reefscape Scouter Spreadsheet").sheet1  # Replace with your Google Sheet name
+if client:
+    print("client Works!")
+try:
+    sheet = client.open("Reefscape Scouter Spreadsheet").sheet1
+except gspread.exceptions.SpreadsheetNotFound:
+    raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
+
+def update_google_sheet(sheet, qr_data):
+    if not qr_data:
+        return  # Skip empty data
+    
+    try:
+        sheet.append_row([qr_data])
+        print(f"Successfully added to Google Sheets: {qr_data}")
+    except Exception as e:
+        print(f"Error updating Google Sheets: {e}")
 
 
 def openQRScanner(filePath):
@@ -147,7 +164,7 @@ def openQRScanner(filePath):
             file.write(qr_str + '\n')
         #Paste string and beep confirmation
         print(qr_str)
-        pyperclip.copy(qr_str)
+        
         prev_qr_strs.append(qr_str)
         winsound.Beep(2500,500)
         time.sleep(0.5)
@@ -181,6 +198,7 @@ if __name__ == '__main__':
             #If data isn't a string, continue
             try:
                 qr_str=str(data)
+                print(data)
             except Exception as e:
                 print("An Error Has Occured, Please make sure the QR code returns a string\n")
                 print("5 second delay, please remove faulty QR code:\n")
@@ -198,8 +216,16 @@ if __name__ == '__main__':
             continue
 
         print(qr_str)
-        pyperclip.copy(qr_str)
+        """
+        DATA ARRAY EXPLANATION:
+
+        Initials for scouter,
+        
+
+
+        """
         prev_qr_strs.append(qr_str)
+        update_google_sheet(sheet, qr_str)
         winsound.Beep(2500,500)
         time.sleep(1.0)
 
