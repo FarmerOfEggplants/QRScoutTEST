@@ -7,7 +7,7 @@ import numpy as np
 import winsound
 import threading
 import gspread
-
+from pathlib import Path
 from oauth2client.service_account import ServiceAccountCredentials
 
 
@@ -82,7 +82,9 @@ class OCR:
             self.stopped = self.exchange.stopped
 #^ GOOGLE SHEETS STUFF
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-json_path = "C:\Repos\QRScout\QRScoutScanner\APIKey.json"
+script_dir = Path(__file__).parent
+json_path = script_dir / "APIKey.json"
+
 if not os.path.exists(json_path):
     raise FileNotFoundError(f"Error: JSON file not found at {json_path}")
 
@@ -102,7 +104,9 @@ def update_google_sheet(sheet, qr_data):
         return  # Skip empty data
     
     try:
-        sheet.append_row([qr_data])
+        print(str(qr_data) + " from UGS")
+        sheet.append_row(qr_data.split("\t"))
+        
         print(f"Successfully added to Google Sheets: {qr_data}")
     except Exception as e:
         print(f"Error updating Google Sheets: {e}")
@@ -177,7 +181,6 @@ if __name__ == '__main__':
 
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_EXPOSURE, -2)      #Set camera settings
-
     # initialize the cv2 QRCode detector 
     detector = cv2.QRCodeDetector()
     prev_qr_arrays = [None]
@@ -199,6 +202,7 @@ if __name__ == '__main__':
         if data:
             #If data isn't a string, continue
             try:
+                print(qr_array)
                 qr_array=str(data)
                 print(data)
             except Exception as e:
