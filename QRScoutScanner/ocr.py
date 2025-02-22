@@ -107,8 +107,11 @@ def update_google_sheet(sheet, qr_data):
         print(str(qr_data) + " from UGS")
         
         cleaned_data = qr_data.split("\t")
-        sheet.append_row(cleaned_data)
-        
+        next_row = len(sheet.get_all_values()) + 1
+        print(f"Next row to be appended: {next_row}")
+        sheet.insert_row(cleaned_data, next_row)
+        # sheet.append_row(cleaned_data)
+        # sheet.append_row("\n")
         print(f"Successfully added to Google Sheets: {qr_data}")
     except Exception as e:
         print(f"Error updating Google Sheets: {e}")
@@ -182,7 +185,7 @@ def openQRScanner(filePath):
 if __name__ == '__main__':
 
     cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_EXPOSURE, -2)      #Set camera settings
+    cap.set(cv2.CAP_PROP_EXPOSURE, -5)      #Set camera settings
     # initialize the cv2 QRCode detector 
     detector = cv2.QRCodeDetector()
     prev_qr_arrays = [None]
@@ -219,8 +222,8 @@ if __name__ == '__main__':
         if (qr_array == None):
             continue
         elif qr_array in prev_qr_arrays:
-            winsound.Beep(2000, 500)
-            winsound.Beep(1500, 500)
+            # winsound.Beep(2000, 500)
+            # winsound.Beep(1500, 500)
             continue
 
         print(qr_array)

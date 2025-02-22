@@ -61,6 +61,7 @@
     {
         "name": "Team Info",
         "fields": [
+            
             {
                 "title": "Scouter Initials",
                 "description": "Enter the initials of the scouter",
