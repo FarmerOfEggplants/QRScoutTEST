@@ -228,10 +228,12 @@
       "fields": [
         {
           "title": "Dislodged Algae?",
-          "type": "boolean",
+          "type": "counter",
           "required": false,
           "code": "Tda",
-          "defaultValue": false
+          "defaultValue": 0,
+          "min": 0,
+          "step": 1
         },
         {
           "title": "Pickup Location",
@@ -368,7 +370,7 @@
           "required": false,
           "code": "Pdfs",
           "defaultValue": 3,
-          "min": 1,
+          "min": 0,
           "max": 5,
           "step": 1
         },
