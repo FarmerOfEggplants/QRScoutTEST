@@ -105,7 +105,9 @@ def update_google_sheet(sheet, qr_data):
     
     try:
         print(str(qr_data) + " from UGS")
-        sheet.append_row(qr_data.split("\t"))
+        
+        cleaned_data = qr_data.split("\t")
+        sheet.append_row(cleaned_data)
         
         print(f"Successfully added to Google Sheets: {qr_data}")
     except Exception as e:
