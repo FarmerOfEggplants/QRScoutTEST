@@ -9,7 +9,7 @@ import threading
 import gspread
 from pathlib import Path
 from oauth2client.service_account import ServiceAccountCredentials
-
+import string
 
 #Video Stream for windows
 class VideoStream:
@@ -81,6 +81,8 @@ class OCR:
 
             self.stopped = self.exchange.stopped
 #^ GOOGLE SHEETS STUFF
+
+# ↓STAYS THE SAME (CONSTANT)↓
 SCOPE = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 script_dir = Path(__file__).parent
 json_path = script_dir / "APIKey.json"
@@ -92,30 +94,100 @@ creds = ServiceAccountCredentials.from_json_keyfile_name(json_path, SCOPE)
 client = gspread.authorize(creds)
 if client:
     print("client Works!")
-try:
-    sheet = client.open("Reefscape Scouter Spreadsheet").sheet1
-except gspread.exceptions.SpreadsheetNotFound:
-    raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
 
 
 
-def update_google_sheet(sheet, qr_data):
+
+def update_google_sheet(qr_data):
+    # Gotta say, this function doesn't work upon initialization due to combatting data types.
+    print(qr_data)
+    qr_data_array = []
+    if type(qr_data) == str:
+
+        qr_data_array = qr_data.split("\t")
+        print(qr_data_array)
     if not qr_data:
+        print("not qr_data")
         return  # Skip empty data
+    print(len(qr_data_array))
+    sheet_number = 0
+    """
+    ~Data array lengths:
+    Pit: 33
+    Match: 25
+    Cycle: 9
+    """
+    if len(qr_data_array) == 33: # If it's pit scout data
+        print("Scout Type: Pit")
+        sheet_number = 2
+        print("from ifs" + str(sheet_number))
+    elif len(qr_data_array) == 25: # If it's match scout data
+        print("Scout Type: Match")
+        sheet_number = 1
+        print("from ifs " + str(sheet_number))
+    elif len(qr_data_array) == 9: # If it's cycle scout data
+        print("Scout Type: Cycle")
+        sheet_number = 3
+        print("from ifs" + str(sheet_number))
+    # else:
+    #     raise Exception("Could not identify scout data type.")
+    if sheet_number == 2:
+        print(sheet_number)
+        try:
+            sheet = client.open("Reefscape Scouter Spreadsheet").worksheet("Match")
     
-    try:
-        print(str(qr_data) + " from UGS")
-        
-        cleaned_data = qr_data.split("\t")
-        next_row = len(sheet.get_all_values()) + 1
-        print(f"Next row to be appended: {next_row}")
-        sheet.insert_row(cleaned_data, next_row)
-        # sheet.append_row(cleaned_data)
-        # sheet.append_row("\n")
-        print(f"Successfully added to Google Sheets: {qr_data}")
-    except Exception as e:
-        print(f"Error updating Google Sheets: {e}")
-
+        except gspread.exceptions.SpreadsheetNotFound:
+            raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
+        try:
+            print((qr_data) + " from UGS")
+            
+            qr_data_array = qr_data.split("\t")
+            next_row = len(sheet.get_all_values()) + 1
+            print(f"Next row to be appended: {next_row}")
+            sheet.insert_row(qr_data_array, next_row)
+            # sheet.append_row(cleaned_data)
+            # sheet.append_row("\n")
+            print(f"Successfully added to Google Sheets: {qr_data}")
+        except Exception as e:
+            print(f"Error updating Google Sheets: {e}")
+    elif sheet_number == 1:
+        print(sheet_number)
+        try:
+            sheet = client.open("Reefscape Scouter Spreadsheet").worksheet("Pit")
+    
+        except gspread.exceptions.SpreadsheetNotFound:
+            raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
+        try:
+            print((qr_data) + " from UGS")
+            
+            qr_data_array = qr_data.split("\t")
+            next_row = len(sheet.get_all_values()) + 1
+            print(f"Next row to be appended: {next_row}")
+            sheet.insert_row(qr_data_array, next_row)
+            # sheet.append_row(cleaned_data)
+            # sheet.append_row("\n")
+            print(f"Successfully added to Google Sheets: {qr_data}")
+        except Exception as e:
+            print(f"Error updating Google Sheets: {e}")
+    elif sheet_number == 3:
+        print(sheet_number)
+        try:
+            sheet = client.open("Reefscape Scouter Spreadsheet").worksheet("Cycle")
+            print("sheet opened!")
+        except gspread.exceptions.SpreadsheetNotFound:
+            raise ValueError("Error: Google Sheet 'Reefscape Scouter Spreadsheet' not found. Check the name or share settings.")
+        try:
+            print((qr_data) + " from UGS")
+            
+            qr_data_array = qr_data.split("\t")
+            next_row = len(sheet.get_all_values()) + 1
+            print(f"Next row to be appended: {next_row}")
+            sheet.insert_row(qr_data_array, next_row)
+            # sheet.append_row(cleaned_data)
+            # sheet.append_row("\n")
+            print(f"Successfully added to Google Sheets: {qr_data}")
+        except Exception as e:
+            print(f"Error updating Google Sheets: {e}")
 
 def openQRScanner(filePath):
 
@@ -175,7 +247,7 @@ def openQRScanner(filePath):
             file.write(qr_array + '\n')
         #Paste string and beep confirmation
         print(qr_array)
-        
+        print(type(qr_array))
         prev_qr_arrays.append(qr_array)
         winsound.Beep(2500,500)
         time.sleep(0.5)
@@ -185,7 +257,8 @@ def openQRScanner(filePath):
 if __name__ == '__main__':
 
     cap = cv2.VideoCapture(0)
-    cap.set(cv2.CAP_PROP_EXPOSURE, -5)      #Set camera settings
+    exposure = 1
+    cap.set(cv2.CAP_PROP_EXPOSURE, exposure)      #Set camera settings
     # initialize the cv2 QRCode detector 
     detector = cv2.QRCodeDetector()
     prev_qr_arrays = [None]
@@ -196,9 +269,16 @@ if __name__ == '__main__':
 
 
         cv2.imshow("Cam1", img)
-        if cv2.waitKey(1) == ord("q"):
+        if cv2.waitKey(1) == ord("q"): # Press Q to quit
             break
-
+        if cv2.waitKey(1) == ord("i"): # Press I to increase the exposure
+            exposure += 1
+            print(exposure)
+            cap.set(cv2.CAP_PROP_EXPOSURE, exposure)
+        if cv2.waitKey(1) == ord("o"): # Press O to decrease the exposure
+            exposure -= 1
+            print(exposure)
+            cap.set(cv2.CAP_PROP_EXPOSURE, exposure)
         try:
             data, bbox, b = detector.detectAndDecode(img)
         except Exception as e:
@@ -207,6 +287,7 @@ if __name__ == '__main__':
         if data:
             #If data isn't a string, continue
             try:
+                print("Data type from line 276: ")
                 print(qr_array)
                 qr_array=str(data)
                 print(data)
@@ -225,8 +306,10 @@ if __name__ == '__main__':
             # winsound.Beep(2000, 500)
             # winsound.Beep(1500, 500)
             continue
-
+        print("293:")
         print(qr_array)
+        print("Data type from line 295: ")
+        print(type(qr_array))
         """
         DATA ARRAY EXPLANATION:
 
@@ -236,7 +319,7 @@ if __name__ == '__main__':
 
         """
         prev_qr_arrays.append(qr_array)
-        update_google_sheet(sheet, qr_array)
+        update_google_sheet(qr_array)
         winsound.Beep(2500,500)
         time.sleep(1.0)
 

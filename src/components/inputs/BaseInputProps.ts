@@ -16,6 +16,7 @@ export const inputBaseSchema = z.object({
     .default('reset')
     .describe('The behavior of this input when the form is reset'),
   defaultValue: z.unknown().describe('The default value'),
+ 
 });
 
 export const stringInputSchema = inputBaseSchema.extend({
