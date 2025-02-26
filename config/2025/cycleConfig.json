@@ -109,23 +109,10 @@
       ]
     },
     {
-      "name": "Autonomous",
-      "fields": [
-        {
-          "title": "Auto Timer",
-          "description": "The time it took for the robot to cycle in autonomous.",
-          "type": "timer",
-          "required": false,
-          "code": "timer",
-          "defaultValue": 0
-        }
-      ]
-    },
-    {
       "name": "Teleop",
       "fields": [
         {
-          "title": "Cycle Time Timer",
+          "title": "Coral Cycle Time Timer",
           "description": "The time it took for the robot to finish collection cycle.",
           "type": "timer",
           "required": false,
@@ -133,17 +120,12 @@
           "defaultValue": 0
         },
         {
-          "title": "Cycle Pattern",
-          "description": "What the team's robot is cycling between (coral, algae).",
-          "type": "select",
-          "required" : false,
-          "code": "cyP",
-          "defaultValue": "",
-          "choices": {
-            "1": "Coral",
-            "2": "Algae",
-            "3": "Other"
-          }
+          "title": "Algae Cycle Time Timer",
+          "description": "The time it took for the robot to finish collection cycle.",
+          "type": "timer",
+          "required": false,
+          "code": "timer",
+          "defaultValue": 0
         }
       ]
     },
@@ -154,9 +136,25 @@
           "title": "Climb Timer",
           "description": "How long the robot takes to climb thier cage.",
           "type": "timer",
-          "required": true,
+          "required": false,
           "defaultValue": 0,
           "code": "ct"
+        },
+        {
+          "title": "Attempted Climb?",
+          "description": "Did they attempt a climb",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": false,
+          "code": "ac"
+        },
+        {
+          "title": "Failed Climb?",
+          "description": "Did they fail the climb",
+          "type": "boolean",
+          "required": false,
+          "defaultValue": false,
+          "code": "fc"
         }
       ]
     },

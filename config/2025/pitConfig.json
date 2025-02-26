@@ -107,16 +107,43 @@
                     "both": "Both",
                     "neither": "Cannot Climb"
                 },
-                "code": "clicapabili"
+                "code": "clicapability"
             },
             {
-                "title": "Climbing Speed",
+                "title": "Estimated Climbing Time",
                 "type": "number",
                 "description": "How many seconds does it take to climb a cage",
                 "required": false,
                 "defaultValue": 0,
                 "formResetBehavior": "reset",
                 "code": "clispeed"
+            },
+            {
+                "title": "Estimated Coral Time",
+                "type": "number",
+                "description": "How many seconds does it take to collect and score in the reef",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "coralspeed"
+            },
+            {
+                "title": "Estimated Algae Processor Time",
+                "type": "number",
+                "description": "How many seconds does it take to collect and score in the processor",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "algprospeed"
+            },
+            {
+                "title": "Estimated Algae Barge Time",
+                "type": "number",
+                "description": "How many seconds does it take to collect and score in the barge",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "algbarspeed"
             },
             {
                 "title": "Dislodging Algae",
@@ -142,20 +169,40 @@
                 "code": "algscore"
             },
             {
-                "title": "Reef Scoring Levels",
+                "title": "Reef L1",
                 "type": "select",
-                "description": "What levels can they score coral on",
+                "description": "Can they score on L1",
                 "required": false,
-                "defaultValue": "none",
+                "defaultValue": "false",
                 "formResetBehavior": "reset",
-                "choices": {
-                    "none": "Cannot Score",
-                    "L1": "Level One",
-                    "L2": "Up to Level Two",
-                    "L3": "Up to Level Three",
-                    "L4": "Up to Level Four"
-                },
-                "code": "reefscoring"
+                "code": "reefL1"
+            },
+            {
+                "title": "Reef L2",
+                "type": "select",
+                "description": "Can they score on L2",
+                "required": false,
+                "defaultValue": "false",
+                "formResetBehavior": "reset",
+                "code": "reefL2"
+            },
+            {
+                "title": "Reef L3",
+                "type": "select",
+                "description": "Can they score on L3",
+                "required": false,
+                "defaultValue": "false",
+                "formResetBehavior": "reset",
+                "code": "reefL3"
+            },
+            {
+                "title": "Reef L4",
+                "type": "select",
+                "description": "Can they score on L4",
+                "required": false,
+                "defaultValue": "false",
+                "formResetBehavior": "reset",
+                "code": "reefL4"
             },
             {
                 "title": "Coral Pickup Options",
@@ -165,6 +212,7 @@
                 "defaultValue": "",
                 "formResetBehavior": "reset",
                 "choices": {
+                    "None": "None",
                     "Ground": "Ground",
                     "human-player": "Human Player",
                     "Both": "Both"
@@ -174,10 +222,10 @@
         ]
     },
     {
-        "name": "Drive Base Info",
+        "name": "Drivebase Info",
         "fields": [
             {
-                "title": "Drivetrain",
+                "title": "Drivebase",
                 "type": "select",
                 "required": false,
                 "defaultValue": "",
@@ -199,6 +247,31 @@
                 "defaultValue": 0,
                 "formResetBehavior": "reset",
                 "code": "gearratio"
+            },
+            {
+                "title": "Drivebase Motors",
+                "type": "select",
+                "description": "What motors are they using to drive (not turning)",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "choices": {
+                    "Kraken": "Kraken",
+                    "Falcon": "Falcon",
+                    "Neo": "Neo",
+                    "Vortex": "Vortex",
+                    "other": "Other"
+                },
+                "code": "drivemotors"
+            },
+            {
+                "title": "Other Drive Motor",
+                "type": "text",
+                "description": "What motor they are using if not one of the above four",
+                "required": false,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "code": "otherdrivemotor"
             },
             {
                 "title": "Length",
@@ -260,6 +333,15 @@
                 "code": "cli"
             },
             {
+                "title": "defense",
+                "type": "boolean",
+                "description": "Will they focus on defense",
+                "required": false,
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "def"
+            },
+            {
                 "title": "Other",
                 "type": "text",
                 "description": "Is there anything else they'll try to do during the match",
@@ -298,12 +380,75 @@
         "fields": [
             {
                 "title": "Auto Capabilities",
-                "type": "text",
+                "type": "select",
                 "description": "What can they do during autonomous",
                 "required": false,
                 "defaultValue": "",
                 "formResetBehavior": "reset",
-                "code": "auto"
+                "choices": {
+                    "leave-line": "Leave Starting Line",
+                    "score-L1": "Score in L1",
+                    "score-L2": "Score in L2",
+                    "score-L3": "Score in L3",
+                    "score-L4": "Score in L4",
+                    "score-processor": "Score in Processor",
+                    "score-barge": "Score in Barge"
+                },
+                "code": "autochoices"
+            },
+            {
+                "title": "L1 Scored",
+                "type": "number",
+                "description": "How many times can they score in L1",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "l1scored"
+            },
+            {
+                "title": "L2 Scored",
+                "type": "number",
+                "description": "How many times can they score in L2",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "l2scored"
+            },
+            {
+                "title": "L3 Scored",
+                "type": "number",
+                "description": "How many times can they score in L3",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "l3scored"
+            },
+            {
+                "title": "L4 Scored",
+                "type": "number",
+                "description": "How many times can they score in L4",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "l4scored"
+            },
+            {
+                "title": "processor Scored",
+                "type": "number",
+                "description": "How many times can they score in the processor",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "processorscored"
+            },
+            {
+                "title": "barge Scored",
+                "type": "number",
+                "description": "How many times can they score in the barge",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "bargescored"
             }
         ]
     },
@@ -329,6 +474,15 @@
                 "code": "algcycle"
             },
             {
+                "title": "Climb Cycle Time",
+                "type": "number",
+                "description": "How many seconds does it take to climb on the preferred cage",
+                "required": false,
+                "defaultValue": 0,
+                "formResetBehavior": "reset",
+                "code": "clicycle"
+            },
+            {
                 "title": "Other",
                 "type": "text",
                 "description": "Do they know any other cycle times",
@@ -340,12 +494,44 @@
         ]
     },
     {
+        "name": "Scouting",
+        "fields": [
+            {
+                "title": "Match Scouting",
+                "type": "boolean",
+                "description": "Are they scouting matches",
+                "required": false,
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "matchscouting" 
+            },
+            {
+                "title": "Pit Scouting",
+                "type": "boolean",
+                "description": "Are they scouting pits",
+                "required": false,
+                "defaultValue": false,
+                "formResetBehavior": "reset",
+                "code": "matchscouting" 
+            }
+        ]
+    },
+    {
         "name": "Comments",
         "fields": [
             {
+                "title": "Whats your favorite soda",
+                "type": "text",
+                "description": "if they say dr pepper they are super cool",
+                "required": true,
+                "defaultValue": "",
+                "formResetBehavior": "reset",
+                "code": "soda"
+            },
+            {
                 "title": "comments",
                 "type": "text",
-                "description": "Other unique / notable things about the bot / team",
+                "description": "Other unique / notable things about the robot / team",
                 "required": false,
                 "defaultValue": "",
                 "formResetBehavior": "reset",
