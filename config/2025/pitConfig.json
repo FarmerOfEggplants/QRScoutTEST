@@ -170,37 +170,37 @@
             },
             {
                 "title": "Reef L1",
-                "type": "select",
+                "type": "boolean",
                 "description": "Can they score on L1",
                 "required": false,
-                "defaultValue": "false",
+                "defaultValue": false,
                 "formResetBehavior": "reset",
                 "code": "reefL1"
             },
             {
                 "title": "Reef L2",
-                "type": "select",
+                "type": "boolean",
                 "description": "Can they score on L2",
                 "required": false,
-                "defaultValue": "false",
+                "defaultValue": false,
                 "formResetBehavior": "reset",
                 "code": "reefL2"
             },
             {
                 "title": "Reef L3",
-                "type": "select",
+                "type": "boolean",
                 "description": "Can they score on L3",
                 "required": false,
-                "defaultValue": "false",
+                "defaultValue": false,
                 "formResetBehavior": "reset",
                 "code": "reefL3"
             },
             {
                 "title": "Reef L4",
-                "type": "select",
+                "type": "boolean",
                 "description": "Can they score on L4",
                 "required": false,
-                "defaultValue": "false",
+                "defaultValue": false,
                 "formResetBehavior": "reset",
                 "code": "reefL4"
             },
