@@ -113,19 +113,19 @@ def update_google_sheet(qr_data):
     sheet_number = 0
     """
     ~Data array lengths:
-    Pit: 33
-    Match: 25
-    Cycle: 9
+    Pit: 44
+    Match: 33
+    Cycle: 10
     """
-    if len(qr_data_array) == 33: # If it's pit scout data
+    if len(qr_data_array) == 44: # If it's pit scout data
         print("Scout Type: Pit")
         sheet_number = 2
         print("from ifs" + str(sheet_number))
-    elif len(qr_data_array) == 25: # If it's match scout data
+    elif len(qr_data_array) == 33: # If it's match scout data
         print("Scout Type: Match")
         sheet_number = 1
         print("from ifs " + str(sheet_number))
-    elif len(qr_data_array) == 9: # If it's cycle scout data
+    elif len(qr_data_array) == 10: # If it's cycle scout data
         print("Scout Type: Cycle")
         sheet_number = 3
         print("from ifs" + str(sheet_number))
