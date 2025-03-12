@@ -56,11 +56,7 @@ export function ConfigSection() {
           </SheetContent>
         </Sheet>
         <ThemeSelector />
-        <Button>
-
-              Hello
-
-        </Button>
+        <button type="button">Click Me!</button>
       </div>
     </Section>
   );
