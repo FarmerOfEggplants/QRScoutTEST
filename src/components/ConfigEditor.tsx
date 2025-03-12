@@ -187,7 +187,7 @@ export function ConfigEditor(props: ConfigEditorProps) {
             <Save className="h-5 w-5" />
             Save
           </Button>
-
+          
           <Input
             type="file"
             ref={fileInputRef}
