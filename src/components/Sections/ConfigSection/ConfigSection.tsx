@@ -35,9 +35,27 @@ export function ConfigSection() {
           <Copy className="h-5 w-5" />
           Copy Column Names
         </Button>
-        
+        <Sheet open={showEditor} onOpenChange={setShowEditor}>
+          <SheetTrigger asChild>
+            <Button variant="secondary">
+              <Edit2 className="h-5 w-5" />
+              Edit Config
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="bottom" className="w-full h-full">
+            <SheetHeader>
+              <SheetTitle>Edit Config</SheetTitle>
+            </SheetHeader>
+            <ConfigEditor
+              onCancel={() => setShowEditor(false)}
+              onSave={configString => {
+                setConfig(configString);
+                setShowEditor(false);
+              }}
+            />
+          </SheetContent>
+        </Sheet>
         <ThemeSelector />
-        <button type="button">Click Me!</button>
       </div>
     </Section>
   );
